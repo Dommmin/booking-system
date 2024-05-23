@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
+use App\Enums\RolesEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Spatie\Permission\Models\Role;
 
 return new class() extends Migration
 {
@@ -126,6 +128,12 @@ return new class() extends Migration
         app('cache')
             ->store('default' !== config('permission.cache.store') ? config('permission.cache.store') : null)
             ->forget(config('permission.cache.key'));
+
+        $roles = RolesEnum::values();
+
+        foreach ($roles as $role) {
+            app(Role::class)->create(['name' => $role, 'guard_name' => 'web']);
+        }
     }
 
     /**
