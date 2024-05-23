@@ -8,11 +8,11 @@ import TwoFactorAuthenticationForm from './partials/TwoFactorAuthenticationForm.
 import { useAuth } from '../../hooks/auth.js';
 import { useTwoFactor } from '../../hooks/two-factor.js';
 import LoadingSpinner from '../../ui/LoadingSpinner';
-// import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 export default function Edit() {
    const { disableTwoFactorAuthentication } = useTwoFactor();
-   // const router = useRouter();
+   const router = useRouter();
    const { user, resendEmailVerification, isFetching, refetch } = useAuth({ middleware: 'auth' });
 
    useEffect(() => {
@@ -28,7 +28,7 @@ export default function Edit() {
    }
 
    if (!user) {
-      // return router.push('/login');
+      return router.push('/login');
    }
 
    return (
