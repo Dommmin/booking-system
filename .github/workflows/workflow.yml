@@ -5,13 +5,13 @@ on:
     branches: [ "main", "develop" ]
 
 env:
-  API_IMAGE: dommin/starter-api:${{ github.sha }}
-  SCHEDULER_IMAGE: dommin/starter-scheduler:${{ github.sha }}
-  WORKER_IMAGE: dommin/starter-worker:${{ github.sha }}
-  NGINX_IMAGE: dommin/starter-nginx:${{ github.sha }}
-  PROXY_IMAGE: dommin/starter-proxy:${{ github.sha }}
-  MYSQL_IMAGE: dommin/starter-mysql:${{ github.sha }}
-  FRONTEND_IMAGE: dommin/starter-frontend:${{ github.sha }}
+  API_IMAGE: dommin/booking-api:${{ github.sha }}
+  SCHEDULER_IMAGE: dommin/booking-scheduler:${{ github.sha }}
+  WORKER_IMAGE: dommin/booking-worker:${{ github.sha }}
+  NGINX_IMAGE: dommin/booking-nginx:${{ github.sha }}
+  PROXY_IMAGE: dommin/booking-proxy:${{ github.sha }}
+  MYSQL_IMAGE: dommin/booking-mysql:${{ github.sha }}
+  FRONTEND_IMAGE: dommin/booking-frontend:${{ github.sha }}
   DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
 
 jobs:
@@ -97,10 +97,10 @@ jobs:
       - uses: actions/checkout@v4
       - name: Remove images
         run: |
-          ./deployment/bin/remove-image.sh dommin/starter-api ${{ github.sha }} ${{ secrets.DOCKER_USERNAME }} ${{ secrets.DOCKER_PASSWORD }}
-          ./deployment/bin/remove-image.sh dommin/starter-mysql ${{ github.sha }} ${{ secrets.DOCKER_USERNAME }} ${{ secrets.DOCKER_PASSWORD }}
-          ./deployment/bin/remove-image.sh dommin/starter-worker ${{ github.sha }} ${{ secrets.DOCKER_USERNAME }} ${{ secrets.DOCKER_PASSWORD }}
-          ./deployment/bin/remove-image.sh dommin/starter-scheduler ${{ github.sha }} ${{ secrets.DOCKER_USERNAME }} ${{ secrets.DOCKER_PASSWORD }}
+          ./deployment/bin/remove-image.sh dommin/booking-api ${{ github.sha }} ${{ secrets.DOCKER_USERNAME }} ${{ secrets.DOCKER_PASSWORD }}
+          ./deployment/bin/remove-image.sh dommin/booking-mysql ${{ github.sha }} ${{ secrets.DOCKER_USERNAME }} ${{ secrets.DOCKER_PASSWORD }}
+          ./deployment/bin/remove-image.sh dommin/booking-worker ${{ github.sha }} ${{ secrets.DOCKER_USERNAME }} ${{ secrets.DOCKER_PASSWORD }}
+          ./deployment/bin/remove-image.sh dommin/booking-scheduler ${{ github.sha }} ${{ secrets.DOCKER_USERNAME }} ${{ secrets.DOCKER_PASSWORD }}
 
   build-nginx:
     needs: [ analyze, test ]
