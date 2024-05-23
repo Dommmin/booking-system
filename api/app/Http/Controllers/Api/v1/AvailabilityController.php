@@ -35,7 +35,6 @@ class AvailabilityController extends Controller
             ? collect([$employee])
             : $this->userRepository->getEmployeesByService($service);
 
-
         $availableSlots = $this->availabilityService->getAvailableSlots($employees, $service, $date);
 
         return $this->availabilityService->transform($availableSlots);

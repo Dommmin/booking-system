@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AppointmentStoreRequest;
 use App\Models\Appointment;
-use App\Models\EmployeeService;
 use App\Models\Service;
 use App\Models\User;
 use App\Services\AppointmentService;

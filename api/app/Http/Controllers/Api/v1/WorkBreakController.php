@@ -8,6 +8,5 @@ class WorkBreakController extends Controller
 {
     public function index()
     {
-
     }
 }
