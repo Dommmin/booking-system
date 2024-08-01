@@ -4,8 +4,7 @@ WORKDIR /usr/src
 COPY ./frontend .
 
 FROM base AS dev
-EXPOSE 80
-#CMD ["npm", "run", "dev"]
+EXPOSE 3000
 
 FROM base AS build
 RUN npm install

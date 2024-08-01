@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Api\v1\Admin;
 use App\Http\Controllers\Api\v1\AppointmentController;
 use App\Http\Controllers\Api\v1\Auth\CurrentUserController;
 use App\Http\Controllers\Api\v1\Auth\SocialiteLoginController;
@@ -51,3 +52,7 @@ Route::apiResource('services', ServiceController::class);
 Route::apiResource('employees/{employee}/services', EmployeeServiceController::class);
 Route::apiResource('employees/{employee}/schedule', ScheduleController::class)
     ->only('index', 'store');
+
+Route::prefix('admin')->group(function () {
+    Route::apiResource('services', Admin\ServiceController::class);
+});

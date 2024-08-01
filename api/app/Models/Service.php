@@ -13,6 +13,7 @@ class Service extends Model
     use HasFactory, HasSlug;
 
     protected $guarded = [];
+    protected $appends = ['formatted_price'];
 
     public function employees(): BelongsToMany
     {
@@ -24,9 +25,9 @@ class Service extends Model
         return 'slug';
     }
 
-    public function getPriceAttribute($value): string
+    public function getFormattedPriceAttribute(): string
     {
-        return '$' . number_format($value / 100, 2);
+        return '$' . number_format($this->price / 100, 2);
     }
 
     public function getSlugOptions(): SlugOptions

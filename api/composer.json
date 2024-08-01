@@ -53,6 +53,7 @@
         "larastan": "./vendor/bin/phpstan analyse --memory-limit=2G",
         "pint": "./vendor/bin/pint",
         "pest": "./vendor/bin/pest",
+        "test": "php artisan test --env=testing",
         "pest-coverage": "./vendor/bin/pest --coverage",
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
